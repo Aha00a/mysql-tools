@@ -1,0 +1,22 @@
+.aha00a.mysql-tools {
+  padding: 0;
+  margin: 0;
+  font-family: 'Noto Sans', sans-serif;
+}
+.aha00a.mysql-tools.index .header {
+  background-color: #eee;
+  padding: 20px;
+}
+.aha00a.mysql-tools.index .content {
+  padding: 20px;
+}
+.aha00a.mysql-tools.index .content form input {
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 5px 0;
+}
+.aha00a.mysql-tools.index .footer {
+  background-color: #eee;
+  padding: 20px;
+}
