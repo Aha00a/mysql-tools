@@ -61,7 +61,7 @@ FLUSH PRIVILEGES;
 
 
 # cron
-0 5 * * * mysqldump -u __id__ -p__pw__ DBName | gzip > ~/backup/mysql/__database__.`date +\%Y\%m\%d.\%H\%M\%S.sql.gz`
+0 5 * * * mysqldump -u __id__ -p__pw__ __database__ | gzip > ~/backup/mysql/__database__.`date +\%Y\%m\%d.\%H\%M\%S.sql.gz`
 </textarea>
                 <h2>Result</h2>
                 <pre class="result"></pre>
