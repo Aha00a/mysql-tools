@@ -49,8 +49,8 @@
                 <h2>Input</h2>
                 <form action="">
                     <input type="text" name="database" placeholder="database" value="database"/>
-                    <input type="text" name="id" placeholder="id" value="id"/>
-                    <input type="text" name="pw" placeholder="pw" value="pw"/>
+                    <input type="text" name="id" placeholder="id" value=""/>
+                    <input type="text" name="pw" placeholder="pw" value=""/>
                     <input type="submit"/>
                 </form>
                 <textarea name="template" class="template" style="display: none;">-- DDL
@@ -66,6 +66,21 @@ FLUSH PRIVILEGES;
 
 // url
 jdbc:mysql://__id__:__pw__@localhost:3306/__database__?characterEncoding=UTF-8&allowMultiQueries=true&
+
+
+
+#!/bin/sh
+(crontab -l ; echo "0 5 * * * mysqldump -u __id__ -p__pw__ __database__ | gzip > ~/backup/mysql/__database__.`date +\%Y\%m\%d.\%H\%M\%S.sql.gz`") | crontab -
+
+echo "
+CREATE DATABASE __database__ CHARACTER SET utf8 COLLATE utf8_bin;
+GRANT ALL PRIVILEGES ON __database__.* TO __id__@localhost IDENTIFIED BY '__pw__' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON __database__.* TO __id__@'%' IDENTIFIED BY '__pw__' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+" | mysql -u root -p
+
+
+
 </textarea>
                 <h2>Result</h2>
                 <pre class="result"></pre>

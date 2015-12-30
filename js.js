@@ -12,6 +12,14 @@ $(function(){
             $('[name=' + name + ']').val(value);
     });
 
+    if(!$('[name=id]').val()) {
+        $('[name=id]').val($('[name=database]').val());
+    }
+
+    if(!$('[name=pw]').val()) {
+        $('[name=pw]').val($('[name=database]').val() + (Math.floor(Math.random() * 10000)));
+    }
+
     var s = $('.template').val()
     $.each(["database", "id", "pw"], function (index, name) {
         var value = $('[name=' + name + ']').val();
