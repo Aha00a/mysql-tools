@@ -2,5 +2,5 @@
 DDL and CRON script generator
 * [https://aha00a.github.io/mysql-tools/]
 
-Copyleft (??) 2015 Aha00a, All rights unreserved.
+Copyleft (?) 2015 Aha00a, All rights unreserved.
 
