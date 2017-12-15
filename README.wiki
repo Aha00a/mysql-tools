@@ -1,3 +1,6 @@
 = mysql-tools - aha00a =
 DDL and CRON script generator
-* [http://aha00a.github.io/mysql-tools/]
+* [https://aha00a.github.io/mysql-tools/]
+
+Copyleft (??) 2015 Aha00a, All rights unreserved.
+
