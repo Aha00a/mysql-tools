@@ -27,6 +27,8 @@ $(function(){
             s = s.replace(new RegExp("__" + name + "__", "g"), value);
         });
         $('.result').html(s);
+        var url = '?' + $('.form').serialize();
+        $('.shareUrl').attr('href', url).text(url);
     }
 
     $('input').keydown(onKeydown).keydown();
