@@ -10,7 +10,14 @@
 .aha00a.mysql-tools.index .content {
   padding: 20px;
 }
-.aha00a.mysql-tools.index .content form input {
+.aha00a.mysql-tools.index .content form label {
+  display: block;
+  position: relative;
+  line-height: 35px;
+}
+.aha00a.mysql-tools.index .content form label input {
+  position: absolute;
+  left: 200px;
   padding: 6px 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
