@@ -20,10 +20,14 @@ $(function(){
         $('[name=pw]').val($('[name=database]').val() + (Math.floor(Math.random() * 10000)));
     }
 
-    var s = $('.template').val()
-    $.each(["database", "id", "pw"], function (index, name) {
-        var value = $('[name=' + name + ']').val();
-        s = s.replace(new RegExp("__" + name + "__", "g"), value);
-    });
-    $('.result').html(s);
+    function onKeydown() {
+        var s = $('.template').val();
+        $.each(["database", "id", "pw"], function (index, name) {
+            var value = $('[name=' + name + ']').val();
+            s = s.replace(new RegExp("__" + name + "__", "g"), value);
+        });
+        $('.result').html(s);
+    }
+
+    $('input').keydown(onKeydown).keydown();
 });
