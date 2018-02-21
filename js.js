@@ -20,7 +20,7 @@ $(function(){
         $('[name=pw]').val($('[name=database]').val() + (Math.floor(Math.random() * 10000)));
     }
 
-    function onKeydown() {
+    $('input').bind('input cut paste keydown keyup keypress blur', function () {
         var s = $('.template').val();
         $.each(["database", "id", "pw"], function (index, name) {
             var value = $('[name=' + name + ']').val();
@@ -29,7 +29,5 @@ $(function(){
         $('.result').html(s);
         var url = '?' + $('.form').serialize();
         $('.shareUrl').attr('href', url).text(url);
-    }
-
-    $('input').keydown(onKeydown).keydown();
+    }).keydown();
 });
