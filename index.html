@@ -53,7 +53,7 @@
                     <label>pw<input type="text" name="pw" placeholder="pw" value=""/></label>
                 </form>
                 <textarea name="template" class="template" style="display: none;">-- DDL
-CREATE DATABASE __database__ CHARACTER SET utf8 COLLATE utf8_bin;
+CREATE DATABASE __database__ CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
 GRANT ALL PRIVILEGES ON __database__.* TO __id__@localhost IDENTIFIED BY '__pw__' WITH GRANT OPTION;
 GRANT ALL PRIVILEGES ON __database__.* TO __id__@'%' IDENTIFIED BY '__pw__' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
