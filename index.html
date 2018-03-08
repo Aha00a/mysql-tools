@@ -60,7 +60,7 @@ FLUSH PRIVILEGES;
 
 
 # cron
-0 5 * * * mysqldump -u __id__ -p__pw__ __database__ | gzip > ~/backup/mysql/__database__.`date +\%Y\%m\%d.\%H\%M\%S.sql.gz`
+0 5 * * * mysqldump --default-character-set=utf8mb4 -u __id__ -p__pw__ __database__ | gzip > ~/backup/mysql/__database__.`date +\%Y\%m\%d.\%H\%M\%S.sql.gz`
 
 
 // url
@@ -69,10 +69,10 @@ jdbc:mysql://__id__:__pw__@localhost:3306/__database__?characterEncoding=UTF-8&a
 
 
 #!/bin/sh
-(crontab -l ; echo "0 5 * * * mysqldump -u __id__ -p__pw__ __database__ | gzip > ~/backup/mysql/__database__.`date +\%Y\%m\%d.\%H\%M\%S.sql.gz`") | crontab -
+(crontab -l ; echo "0 5 * * * mysqldump --default-character-set=utf8mb4 -u __id__ -p__pw__ __database__ | gzip > ~/backup/mysql/__database__.`date +\%Y\%m\%d.\%H\%M\%S.sql.gz`") | crontab -
 
 echo "
-CREATE DATABASE __database__ CHARACTER SET utf8 COLLATE utf8_bin;
+CREATE DATABASE __database__ CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
 GRANT ALL PRIVILEGES ON __database__.* TO __id__@localhost IDENTIFIED BY '__pw__' WITH GRANT OPTION;
 GRANT ALL PRIVILEGES ON __database__.* TO __id__@'%' IDENTIFIED BY '__pw__' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
