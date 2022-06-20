@@ -12,21 +12,32 @@ $(function(){
             $('[name=' + name + ']').val(value);
     });
 
-    if(!$('[name=id]').val()) {
-        $('[name=id]').val($('[name=database]').val());
+    let $id = $('[name=id]');
+    if(!$id.val()) {
+        $id.val($('[name=database]').val());
     }
 
-    if(!$('[name=pw]').val()) {
-        $('[name=pw]').val($('[name=database]').val() + (Math.floor(Math.random() * 10000)));
+    let $pw = $('[name=pw]');
+    if(!$pw.val()) {
+        $pw.val($('[name=database]').val() + (Math.floor(Math.random() * 10000)));
     }
 
     $('input').bind('input cut paste keydown keyup keypress blur', function () {
-        var s = $('.template').val();
+        var s8 = $('.template8').val();
         $.each(["database", "id", "pw"], function (index, name) {
             var value = $('[name=' + name + ']').val();
-            s = s.replace(new RegExp("__" + name + "__", "g"), value);
+            s8 = s8.replace(new RegExp("__" + name + "__", "g"), value);
         });
-        $('.result').html(s);
+        $('.result8').html(s8);
+
+        var s5 = $('.template5').val();
+        $.each(["database", "id", "pw"], function (index, name) {
+            var value = $('[name=' + name + ']').val();
+            s5 = s5.replace(new RegExp("__" + name + "__", "g"), value);
+        });
+        $('.result5').html(s5);
+
+
         var url = '?' + $('.form').serialize();
         $('.shareUrl').attr('href', url).text(url);
     }).keydown();

@@ -52,7 +52,36 @@
                     <label>id<input type="text" name="id" placeholder="id" value=""/></label>
                     <label>pw<input type="text" name="pw" placeholder="pw" value=""/></label>
                 </form>
-                <textarea name="template" class="template" style="display: none;">-- DDL
+                <textarea name="template8" class="template8" style="display: none;">-- DDL
+CREATE DATABASE __database__ CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
+CREATE USER '__id__'@'localhost' IDENTIFIED BY '__pw__';
+CREATE USER '__id__'@'%' IDENTIFIED BY '__pw__';
+GRANT ALL PRIVILEGES ON __database__.* TO __id__@localhost WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON __database__.* TO __id__@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+
+
+# cron
+0 5 * * * mysqldump --default-character-set=utf8mb4 -u __id__ -p__pw__ __database__ | gzip > ~/backup/mysql/__database__.`date +\%Y\%m\%d.\%H\%M\%S.sql.gz`
+
+
+// url
+jdbc:mysql://__id__:__pw__@localhost:3306/__database__?characterEncoding=UTF-8&allowMultiQueries=true&
+
+
+
+#!/bin/sh
+(crontab -l ; echo "0 5 * * * mysqldump --default-character-set=utf8mb4 -u __id__ -p__pw__ __database__ | gzip > ~/backup/mysql/__database__.`date +\%Y\%m\%d.\%H\%M\%S.sql.gz`") | crontab -
+
+echo "
+CREATE DATABASE __database__ CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
+GRANT ALL PRIVILEGES ON __database__.* TO __id__@localhost IDENTIFIED BY '__pw__' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON __database__.* TO __id__@'%' IDENTIFIED BY '__pw__' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+" | mysql -u root -p
+
+</textarea>
+<textarea name="template8" class="template5" style="display: none;">-- DDL
 CREATE DATABASE __database__ CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
 GRANT ALL PRIVILEGES ON __database__.* TO __id__@localhost IDENTIFIED BY '__pw__' WITH GRANT OPTION;
 GRANT ALL PRIVILEGES ON __database__.* TO __id__@'%' IDENTIFIED BY '__pw__' WITH GRANT OPTION;
@@ -78,12 +107,15 @@ GRANT ALL PRIVILEGES ON __database__.* TO __id__@'%' IDENTIFIED BY '__pw__' WITH
 FLUSH PRIVILEGES;
 " | mysql -u root -p
 
-
-
 </textarea>
                 <h2>Result</h2>
                 <a href="#" class="shareUrl">Url</a>
-                <pre class="result"></pre>
+
+                <h3>MySQL 8.x</h3>
+                <pre class="result8"></pre>
+
+                <h3>MySQL 5.x</h3>
+                <pre class="result5"></pre>
             </div>
         </div>
 
