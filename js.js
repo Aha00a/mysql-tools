@@ -6,6 +6,15 @@ function getParameterByName(name) {
 }
 
 $(function(){
+    function generatePassword() {
+        var chars = "abcdefghijklmnopqrstuvwxyz0123456789";
+        var result = "";
+        for (var i = 0; i < 32; i++) {
+            result += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        return result;
+    }
+
     $.each(["database", "id", "pw"], function (index, name) {
         var value = getParameterByName(name);
         if(value)
@@ -19,8 +28,12 @@ $(function(){
 
     let $pw = $('[name=pw]');
     if(!$pw.val()) {
-        $pw.val($('[name=database]').val() + (Math.floor(Math.random() * 10000)));
+        $pw.val(generatePassword());
     }
+
+    $('.generatePw').on('click', function () {
+        $pw.val(generatePassword()).trigger('input');
+    });
 
     $('input').bind('input cut paste keydown keyup keypress blur', function () {
         var s8 = $('.template8').val();

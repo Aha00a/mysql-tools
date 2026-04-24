@@ -23,3 +23,17 @@
   border-radius: 4px;
   margin: 5px 0;
 }
+.aha00a.mysql-tools.index .content form label.pw-field input {
+  width: 280px;
+}
+.aha00a.mysql-tools.index .content form label.pw-field .generatePw {
+  position: absolute;
+  left: 500px;
+  top: 5px;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+}
+/*# sourceMappingURL=less.css.map */
