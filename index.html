@@ -50,14 +50,14 @@
                 <form class="form">
                     <label>database<input type="text" name="database" placeholder="database" value="database"/></label>
                     <label>id<input type="text" name="id" placeholder="id" value=""/></label>
-                    <label class="pw-field">pw<input type="text" name="pw" placeholder="pw" value=""/><button type="button" class="generatePw">generate</button></label>
+                    <label class="pw-field">pw<input type="text" name="pw" placeholder="pw" value="" autocomplete="new-password"/><button type="button" class="generatePw">generate</button></label>
                 </form>
                 <textarea name="template8" class="template8" style="display: none;">-- DDL
 CREATE DATABASE __database__ CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
 CREATE USER '__id__'@'localhost' IDENTIFIED BY '__pw__';
 CREATE USER '__id__'@'%' IDENTIFIED BY '__pw__';
-GRANT ALL PRIVILEGES ON __database__.* TO __id__@localhost WITH GRANT OPTION;
-GRANT ALL PRIVILEGES ON __database__.* TO __id__@'%' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON __database__.* TO '__id__'@'localhost' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON __database__.* TO '__id__'@'%' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
 
 
